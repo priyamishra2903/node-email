@@ -20,13 +20,18 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 
-app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname,'index.html'));
-});
-
-app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname,'index.html'));
+app.get('/getData',(req,res)=>{
+  res.send("hi")
 })
+
+// app.get('/',(req,res)=>{
+//     res.sendFile(path.join(__dirname,'index.html'));
+// });
+
+// app.get('*',(req,res)=>{
+//     res.sendFile(path.join(__dirname,'index.html'));
+// })
+
 
 
 // sendmail post request
