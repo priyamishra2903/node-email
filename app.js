@@ -1,25 +1,25 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const app = express();
-const nodemailer = require('nodemailer');
-const cors = require('cors');
-const http = require('http');
-const httpProxy = require('http-proxy');
+// const express = require('express');
+// const path = require('path');
+// const bodyParser = require('body-parser');
+// const app = express();
+// const nodemailer = require('nodemailer');
+// const cors = require('cors');
+// const http = require('http');
+// const httpProxy = require('http-proxy');
 
-const corsOptions = {
-  origin: '*', // Allow requests from any origin (not recommended for production)
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // Allow cookies and credentials to be sent
-};
+// const corsOptions = {
+//   origin: '*', // Allow requests from any origin (not recommended for production)
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true, // Allow cookies and credentials to be sent
+// };
 
-app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(cors(corsOptions));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/getData', (req, res) => {
-  res.send("hiiii");
-});
+// app.get('/getData', (req, res) => {
+//   res.send("hiiii");
+// });
 
 // // HTTP-to-HTTPS proxy server setup
 // const HTTP_PORT = 80; // Port for HTTP proxy
@@ -40,7 +40,22 @@ app.get('/getData', (req, res) => {
 //   console.log(`HTTP proxy server is running at port: ${HTTP_PORT}`);
 // });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running at port : ${PORT}`);
-});
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+//   console.log(`Server is running at port : ${PORT}`);
+// });
+
+
+var fs = require('fs'); 
+var https = require('https');
+var options = { 
+    key: fs.readFileSync('../private-key.pem.pem'), 
+    cert: fs.readFileSync('../certificate.pem'), 
+    ca: fs.readFileSync('../apig-cert.pem'), 
+    requestCert: true, 
+    rejectUnauthorized: true
+};
+https.createServer(options, function (req, res) { 
+    res.writeHead(200); 
+    res.end("hello world\n"); 
+}).listen(443);
