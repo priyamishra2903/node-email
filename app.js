@@ -18,9 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define your HTTPS server options
 const httpsOptions = {
-  key: fs.readFileSync('./private-key.pem'), // Update the path to your private key
-  cert: fs.readFileSync('./certificate.pem'), // Update the path to your certificate
-  ca: fs.readFileSync('./apig-cert.pem'), // Update the path to your CA certificate
+  key: fs.readFileSync('../private-key.pem'), // Update the path to your private key
+  cert: fs.readFileSync('../certificate.pem'), // Update the path to your certificate
+  ca: fs.readFileSync('../apig-cert.pem'), // Update the path to your CA certificate
   requestCert: true,
   rejectUnauthorized: true,
 };
