@@ -70,7 +70,7 @@ app.post('/getFormDetails', async (req, res) => {
   
       let mailOptions = {
         from: 'priyamishraforwork@gmail.com',
-        to: 'mishrapriya9999@gmail.com',
+        to: 'info@haleeducation.com',
         subject: 'New Form Submission',
         html: body
       };
